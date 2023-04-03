@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 .env
 pnpm-lock.yaml
+.vercel
+public
+dist
