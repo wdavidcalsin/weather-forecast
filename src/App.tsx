@@ -1,5 +1,5 @@
+import * as React from 'react'
 import "./App.css";
-import { Map } from "./components";
 import { Home } from "./page";
 
 function App() {

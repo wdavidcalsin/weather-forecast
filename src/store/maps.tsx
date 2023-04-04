@@ -1,50 +1,55 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { FETCH_COMMIT_URL, FETCH_TAG_URL } from "../constant";
-import { getCurrentVersion } from "../utils";
+import { GET_WEATHER } from "../constant";
+import { ICoordinates, IWeather } from "@/types";
+import { weatherModel } from "@/model";
+import { weatherService } from "@/services";
 
-export interface UpdateStore {
-  lastUpdate: number;
-  remoteId: string;
+export interface IUseWeatherStore {
+  weatherData: ICoordinates;
+  fetchWeatherData: IWeather;
+  isLoading: boolean;
 
-  getLatestCommitId: (force: boolean) => Promise<string>;
+  setLatAndLong: (data: ICoordinates) => void;
+  setFetchWeatherData: () => void;
+  setIsLoading: (isLoading: boolean) => void;
 }
 
-export const UPDATE_KEY = "chat-update";
-
-export const useUpdateStore = create<UpdateStore>()(
+export const useWeatherStore = create<IUseWeatherStore>()(
   persist(
     (set, get) => ({
-      lastUpdate: 0,
-      remoteId: "",
+      weatherData: { latitude: "", longitude: "" },
+      fetchWeatherData: weatherModel,
+      isLoading: false,
 
-      async getLatestCommitId(force = false) {
-        const overTenMins = Date.now() - get().lastUpdate > 10 * 60 * 1000;
-        const shouldFetch = force || overTenMins;
-        if (!shouldFetch) {
-          return getCurrentVersion();
-        }
+      async setLatAndLong({ latitude, longitude }) {
+        set((state) => ({
+          ...state,
+          weatherData: { latitude, longitude },
+        }));
+      },
+      async setFetchWeatherData() {
+        get().setIsLoading(true);
 
-        try {
-          // const data = await (await fetch(FETCH_TAG_URL)).json();
-          // const remoteId = data[0].name as string;
-          const data = await (await fetch(FETCH_COMMIT_URL)).json();
-          const remoteId = (data[0].sha as string).substring(0, 7);
-          set(() => ({
-            lastUpdate: Date.now(),
-            remoteId,
-          }));
-          console.log("[Got Upstream] ", remoteId);
-          return remoteId;
-        } catch (error) {
-          console.error("[Fetch Upstream Commit Id]", error);
-          return getCurrentVersion();
-        }
+        const fetchWeather = await weatherService(get().weatherData);
+
+        set((state) => ({
+          ...state,
+          fetchWeatherData: fetchWeather,
+        }));
+
+        get().setIsLoading(false);
+      },
+      setIsLoading(isLoading) {
+        set((state) => ({
+          ...state,
+          isLoading,
+        }));
       },
     }),
     {
-      name: UPDATE_KEY,
+      name: GET_WEATHER,
       version: 1,
-    },
-  ),
+    }
+  )
 );

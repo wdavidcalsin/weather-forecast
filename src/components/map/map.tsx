@@ -1,4 +1,10 @@
+import "leaflet/dist/leaflet.css";
+
+import * as React from "react";
 import L from "leaflet";
+import markerIcon from "leaflet/dist/images/marker-icon.png";
+import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
+import markerShadow from "leaflet/dist/images/marker-shadow.png";
 import {
   MapContainer,
   Marker,
@@ -7,12 +13,7 @@ import {
   useMapEvents,
 } from "react-leaflet";
 
-import "leaflet/dist/leaflet.css";
-import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
-import markerIcon from "leaflet/dist/images/marker-icon.png";
-import markerShadow from "leaflet/dist/images/marker-shadow.png";
-
-import * as React from "react";
+import { useWeatherStore } from "@/store";
 
 // @ts-ignore
 delete L.Icon.Default.prototype._getIconUrl;
@@ -32,9 +33,19 @@ const attribution =
 
 function LocationMarker() {
   const [position, setPosition] = React.useState<L.LatLng | null>(null);
+  const { setLatAndLong, setFetchWeatherData } = useWeatherStore();
+
   const map = useMapEvents({
-    click(e) {
+    async click(e) {
       map.locate();
+      setLatAndLong({
+        latitude: e.latlng.lat.toString(),
+        longitude: e.latlng.lng.toString(),
+      });
+
+      setPosition(e.latlng);
+      await setFetchWeatherData();
+
       console.log(e.latlng);
     },
     locationfound(e) {
@@ -57,7 +68,7 @@ const Map: React.FC<MapProps> = ({ center }) => {
       zoom={center ? 4 : 2}
       scrollWheelZoom={false}
       className="h-[35vh] rounded-lg"
-      style={{ width: "400px", height: "400px" }}
+      style={{ width: "100%", height: "100%" }}
     >
       <TileLayer url={url} attribution={attribution} />
       {/* {center && <Marker position={center as L.LatLngExpression} />} */}

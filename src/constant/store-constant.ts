@@ -1,2 +1,2 @@
-export const FETCH_WEATHER_URL =
-  "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/38.9697,-77.385?key=QSL7D79FXFSJ4JVAE6S88EEY3";
+export const FETCH_WEATHER_URL = "http://localhost:3000/api/weather";
+export const GET_WEATHER = "weather";
