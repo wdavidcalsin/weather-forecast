@@ -1,6 +1,7 @@
-import express, { type Request, type Response } from "express";
 import * as dotenv from "dotenv";
+import express, { type Request, type Response } from "express";
 import fetch from "node-fetch";
+
 import { IWeather } from "./types/weather-type";
 
 dotenv.config();
