@@ -4,9 +4,10 @@ import { Spinner } from "../spinner";
 
 import { conditionImage } from "@/model";
 import { useWeatherStore } from "@/store";
+import { WeatherDays } from "@/sub-components";
 
 const Weather = () => {
-  const { weatherData, fetchWeatherData, isLoading } = useWeatherStore();
+  const { fetchWeatherData, isLoading } = useWeatherStore();
 
   return (
     <div
@@ -33,21 +34,7 @@ const Weather = () => {
             <p>Latitude: {weatherData.latitude} </p>
             <p>Longitude: {weatherData.longitude} </p>
           </div> */}
-          <div className="flex gap-4 flex-wrap">
-            {fetchWeatherData.days.map((day, index) => (
-              <div
-                key={index}
-                className="w-16 h-16 rounded-3xl bg-[conic-gradient(at_top_left,_var(--tw-gradient-stops))] from-white/20 via-white/10 to-white/5"
-              >
-                <div className="flex justify-center flex-col items-center gap-4">
-                  <img
-                    className=" w-7 h-7"
-                    src={conditionImage[day.conditions].image}
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
+          <WeatherDays/>
         </>
       )}
     </div>
