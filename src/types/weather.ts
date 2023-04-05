@@ -100,3 +100,9 @@ export interface ICoordinates {
   latitude: string;
   longitude: string;
 }
+
+interface ConditionData {
+  image: string;
+}
+
+export type ConditionsWithData = Record<Conditions, ConditionData>;

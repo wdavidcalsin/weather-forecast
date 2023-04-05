@@ -1,1 +1,1 @@
-export * from "./weather-mode";
+export * from "./weather-model";

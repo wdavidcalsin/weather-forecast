@@ -9,10 +9,13 @@ const position = [33.93606842758016, -118.02722208201887];
 
 const Home = () => {
   const [isShowing, setIsShowing] = React.useState(false);
+  const spinnerRef = React.useRef<HTMLDivElement>(null);
   const { weatherData } = useWeatherStore();
 
-  const handleClick = () => {
+  const handleClick = async () => {
     setIsShowing((isShowing) => !isShowing);
+
+    spinnerRef.current?.classList.toggle("rotate-180");
   };
 
   return (
@@ -48,8 +51,9 @@ const Home = () => {
 
         <div className="px-5">
           <div
-            className="p-3 border border-white/10 rounded-3xl cursor-pointer transition ease-in-out delay-75 hover:scale-110  hover:bg-white/5 duration-300 hover:rotate-180"
+            className={`p-3 border border-white/10 rounded-3xl cursor-pointer transition ease-in-out delay-75 hover:scale-110 hover:bg-white/5 duration-300`}
             onClick={handleClick}
+            ref={spinnerRef}
           >
             <AiOutlineRetweet className="text-slate-50 text-2xl" />
           </div>

@@ -1,9 +1,11 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+
 import { GET_WEATHER } from "../constant";
-import { ICoordinates, IWeather } from "@/types";
+
 import { weatherModel } from "@/model";
 import { weatherService } from "@/services";
+import { ICoordinates, IWeather } from "@/types";
 
 export interface IUseWeatherStore {
   weatherData: ICoordinates;
@@ -18,7 +20,10 @@ export interface IUseWeatherStore {
 export const useWeatherStore = create<IUseWeatherStore>()(
   persist(
     (set, get) => ({
-      weatherData: { latitude: "", longitude: "" },
+      weatherData: {
+        latitude: "-11.845627444321911",
+        longitude: "-76.78950497836112",
+      },
       fetchWeatherData: weatherModel,
       isLoading: false,
 

@@ -1,4 +1,10 @@
-import { Conditions, IWeather, Icon, Source } from "@/types";
+import {
+  Conditions,
+  ConditionsWithData,
+  Icon,
+  IWeather,
+  Source,
+} from "@/types";
 
 export const weatherModel: IWeather = {
   address: "",
@@ -38,4 +44,25 @@ export const weatherModel: IWeather = {
   stations: {},
   timezone: "",
   tzoffset: 0,
+};
+
+export const conditionImage: ConditionsWithData = {
+  [Conditions.Clear]: {
+    image: "./weather-image/clear.png",
+  },
+  [Conditions.Overcast]: {
+    image: "./weather-image/overcast.png",
+  },
+  [Conditions.PartiallyCloudy]: {
+    image: "./weather-image/partially-cloudy.png",
+  },
+  [Conditions.Rain]: {
+    image: "./weather-image/rain.png",
+  },
+  [Conditions.RainOvercast]: {
+    image: "./weather-image/rain-overcast.png",
+  },
+  [Conditions.RainPartiallyCloudy]: {
+    image: "./weather-image/rain-partially-cloudy.png",
+  },
 };

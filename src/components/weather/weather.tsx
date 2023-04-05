@@ -2,6 +2,7 @@ import * as React from "react";
 
 import { Spinner } from "../spinner";
 
+import { conditionImage } from "@/model";
 import { useWeatherStore } from "@/store";
 
 const Weather = () => {
@@ -22,7 +23,10 @@ const Weather = () => {
             </h5>
             <img
               className="animate-bounce w-20 h-20"
-              src="./weather-image/partially-cloudy.png"
+              src={
+                conditionImage[fetchWeatherData.currentConditions.conditions]
+                  .image
+              }
             />
           </div>
           <div className="text-slate-50">
