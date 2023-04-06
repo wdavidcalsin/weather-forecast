@@ -1,5 +1,7 @@
-import * as React from 'react'
 import "./App.css";
+
+import * as React from "react";
+
 import { Home } from "./page";
 
 function App() {

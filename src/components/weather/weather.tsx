@@ -11,14 +11,14 @@ const Weather = () => {
 
   return (
     <div
-      className="border border-white/10 py-3 px-5 rounded-xl h-full w-[27rem]"
+      className="border border-white/10 py-3 px-5 rounded-xl h-full w-full md:w-[100%]"
       style={{ background: "#171717" }}
     >
       {isLoading ? (
         <Spinner />
       ) : (
         <>
-          <div className="flex justify-center flex-col items-center gap-4">
+          <div className="flex justify-center flex-col items-center gap-4 h-[9.3rem]">
             <h5 className="text-slate-50 uppercase font-medium text-sm">
               {fetchWeatherData.currentConditions.conditions}
             </h5>
@@ -30,11 +30,8 @@ const Weather = () => {
               }
             />
           </div>
-          {/* <div className="text-slate-50">
-            <p>Latitude: {weatherData.latitude} </p>
-            <p>Longitude: {weatherData.longitude} </p>
-          </div> */}
-          <WeatherDays/>
+
+          <WeatherDays />
         </>
       )}
     </div>
