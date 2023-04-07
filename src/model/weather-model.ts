@@ -80,4 +80,7 @@ export const conditionImage: ConditionsWithData = {
   [Conditions.SnowRainOvercast]: {
     image: "./weather-image/snow-rain-overcast.png",
   },
+  [Conditions.SnowRainPartiallyCloudy]: {
+    image: "./weather-image/snow-rain-overcast.png",
+  },
 };

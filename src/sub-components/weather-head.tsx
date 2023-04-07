@@ -3,14 +3,16 @@ import * as React from "react";
 import { Clock } from "@/components";
 import { conditionImage } from "@/model";
 import { useWeatherStore } from "@/store";
+import { getDateTime } from "@/utils";
 
 const WeatherHead = () => {
   const { fetchWeatherData } = useWeatherStore();
+  const { day, month } = getDateTime(fetchWeatherData.currentConditions);
 
   return (
     <div className="bg-[#303030] rounded-2xl px-4 py-3">
       <div className="flex justify-center flex-col items-center gap-4 ">
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-1 text-center">
           <h4 className="text-white/25 text-lg font-medium">Today</h4>
           <h5 className="text-slate-50 text-lg uppercase font-medium">
             {fetchWeatherData.currentConditions.conditions}
@@ -34,7 +36,10 @@ const WeatherHead = () => {
               </div>
             </div>
             <div>
-              Date Time: <span className="text-white/40 ">1 Of March</span>{" "}
+              Date Time:{" "}
+              <span className="text-white/40 ">
+                {day} of {month}
+              </span>{" "}
             </div>
           </div>
         </div>

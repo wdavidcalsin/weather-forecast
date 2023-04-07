@@ -63,6 +63,7 @@ export enum Conditions {
   Snow = "Snow",
   SnowOvercast = "Snow, Overcast",
   SnowPartiallyCloudy = "Snow, Partially cloudy",
+  SnowRainPartiallyCloudy = "Snow, Rain, Partially cloudy",
   SnowRainOvercast = "Snow, Rain, Overcast",
 }
 
