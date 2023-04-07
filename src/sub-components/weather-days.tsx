@@ -15,11 +15,11 @@ const WeatherDays = () => {
   };
 
   return (
-    <div className="flex gap-4 flex-wrap">
+    <div className="grid gap-4 grid-cols-3 grid-rows-5 w-full pb-3">
       {fetchWeatherData.days.map((day, index) => (
         <div
           key={index}
-          className="w-16 h-16 rounded-3xl bg-[conic-gradient(at_top_left,_var(--tw-gradient-stops))] from-white/20 via-white/10 transition delay-75 to-white/5 hover:scale-105 cursor-pointer"
+          className="w-full h-full p-2 rounded-lg bg-[conic-gradient(at_top_left,_var(--tw-gradient-stops))] from-white/20 via-white/10 transition delay-75 to-white/5 hover:scale-105 cursor-pointer"
           onClick={() => handleClick(day)}
         >
           <div className="flex flex-col gap-1 h-full justify-center items-center">
@@ -31,7 +31,7 @@ const WeatherDays = () => {
           </div>
         </div>
       ))}
-      <ModalCustom/>
+      <ModalCustom />
     </div>
   );
 };

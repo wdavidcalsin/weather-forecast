@@ -3,12 +3,10 @@ import { FaGithub, FaTwitter } from "react-icons/fa";
 
 const Header = () => {
   return (
-    <div className="flex justify-between items-center md:items-start bg-orange-400">
-      <div className="text-base bg-red-600 flex flex-col ">
-        <h5 className="text-slate-100 font-bold bg-fuchsia-700">
-          weatherForecast
-        </h5>
-        <p className="text-white/20 invisible md:visible">
+    <div className="flex justify-between items-center md:items-start ">
+      <div className="text-base  flex flex-col ">
+        <h5 className="text-slate-100 font-bold ">weatherForecast</h5>
+        <p className="text-white/20 hidden lg:block">
           Forecasting weather and atmospheric conditions
         </p>
       </div>

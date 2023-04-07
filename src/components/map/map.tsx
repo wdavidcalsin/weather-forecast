@@ -67,8 +67,7 @@ const Map: React.FC<MapProps> = ({ center }) => {
       center={(center as L.LatLngExpression) || [51, -0.09]}
       zoom={center ? 4 : 2}
       scrollWheelZoom={false}
-      className="h-[20rem] w-[35rem] rounded-lg"
-      style={{ width: "100%" }}
+      className="h-[20rem] lg:h-full w-full rounded-xl"
     >
       <TileLayer url={url} attribution={attribution} />
       <LocationMarker />

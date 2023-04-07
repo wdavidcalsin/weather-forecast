@@ -22,22 +22,24 @@ const Home = () => {
 
   return (
     <div className="bg-black min-h-screen grid place-items-center transition-transform ease-in-out delay-700">
-      <div className="w-[27rem] sm:w-[30rem] md:w-[50rem] ">
-        <Header />
-        <div
-          className={`z-10 bg-black rounded-xl border border-white/20 p-3 flex justify-between items-center gap-4 flex-col lg:flex-row ${
-            isShowing && addFlexRowOrCol()
-          }`}
-        >
-          <MapContent />
+      <div className="w-[27rem] sm:w-[30rem] md:w-[30rem] lg:w-[50rem] xl:w-[50rem]">
+        <div className="w-full flex flex-col gap-10 py-10 lg:py-0">
+          <Header />
           <div
-            className={`p-3 border border-white/10 rounded-3xl cursor-pointer transition ease-in-out delay-75 hover:scale-110 hover:bg-white/5 duration-300`}
-            onClick={handleClick}
-            ref={spinnerRef}
+            className={`z-10 w-full h-auto lg:h-[32rem] bg-black rounded-3xl border border-white/20 p-3.5 flex justify-between items-center gap-4 flex-col lg:flex-row ${
+              isShowing && addFlexRowOrCol()
+            }`}
           >
-            <AiOutlineRetweet className="text-slate-50 text-2xl" />
+            <MapContent />
+            <div
+              className={`p-3 border border-white/10 rounded-3xl cursor-pointer transition ease-in-out delay-75 hover:scale-110 hover:bg-white/5 duration-300`}
+              onClick={handleClick}
+              ref={spinnerRef}
+            >
+              <AiOutlineRetweet className="text-slate-50 text-2xl" />
+            </div>
+            <Weather />
           </div>
-          <Weather />
         </div>
       </div>
     </div>
