@@ -60,6 +60,10 @@ export enum Conditions {
   Rain = "Rain",
   RainOvercast = "Rain, Overcast",
   RainPartiallyCloudy = "Rain, Partially cloudy",
+  Snow = "Snow",
+  SnowOvercast = "Snow, Overcast",
+  SnowPartiallyCloudy = "Snow, Partially cloudy",
+  SnowRainOvercast = "Snow, Rain, Overcast",
 }
 
 export enum Icon {

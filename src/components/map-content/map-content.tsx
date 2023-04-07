@@ -29,7 +29,7 @@ const MapContent = () => {
         <p className="border border-white/10 p-3 rounded-xl text-slate-300 flex-1">
           Longitude:{" "}
           <span className="font-light italic">
-            {_.floor(Number(weatherData.longitude), 5)}
+            {_.floor(Number(weatherData.longitude), 4)}
           </span>{" "}
         </p>
       </div>

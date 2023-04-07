@@ -25,7 +25,11 @@ const WeatherDays = () => {
           <div className="flex flex-col gap-1 h-full justify-center items-center">
             <img
               className=" w-7 h-7"
-              src={conditionImage[day.conditions].image}
+              src={
+                conditionImage[day.conditions].image
+                  ? conditionImage[day.conditions].image
+                  : ""
+              }
             />
             <h5 className="text-[10px] text-gray-400">{day.datetime}</h5>
           </div>
