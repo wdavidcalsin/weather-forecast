@@ -35,9 +35,9 @@ const WeatherDays = () => {
                     : ""
                 }
               />
-              <div className="flex flex-col text-center font-bold">
-                <h5 className="text-[10px] text-gray-400">{day}</h5>
-                <h5 className="text-[10px] text-gray-400">{month}</h5>
+              <div className="flex flex-col text-center font-bold font-mono text-[1rem]">
+                <h5 className=" text-gray-400">{day}</h5>
+                <h5 className=" text-gray-400">{month}</h5>
               </div>
             </div>
           </div>

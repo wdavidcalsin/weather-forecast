@@ -31,8 +31,8 @@ const WeatherHead: React.FC<PropsWeatherHead> = ({ weatherCondition }) => {
             />
           </div>
           <div className="flex flex-col gap-2 text-white/25 text-lg font-medium ">
-            <div className="flex items-center gap-3">
-              Hours:
+            <div className="flex items-end gap-1">
+              Last Update:
               <div className="w-10">
                 {/* <Clock /> */}
                 <WeatherTime propsTime={weatherCondition} />
@@ -40,7 +40,7 @@ const WeatherHead: React.FC<PropsWeatherHead> = ({ weatherCondition }) => {
             </div>
             <div>
               Date Time:{" "}
-              <span className="text-white/40 ">
+              <span className="text-white/40 font-mono">
                 {day} of {month}
               </span>{" "}
             </div>

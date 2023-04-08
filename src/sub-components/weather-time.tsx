@@ -1,32 +1,27 @@
 import * as React from "react";
+import _ from "lodash";
 
-interface ITime {
-  datetimeEpoch: number;
+import { CurrentConditions } from "@/types";
+import { getDateTime } from "@/utils";
+
+interface ITimeState {
+  day: number;
+  month: string;
+  hours: number;
+  minute: number;
+  seconds: number;
 }
-
 interface PropsWeatherTime {
-  propsTime: ITime;
+  propsTime: CurrentConditions;
 }
 
 const WeatherTime: React.FC<PropsWeatherTime> = ({ propsTime }) => {
-  const { datetimeEpoch } = propsTime;
-  const [time, setTime] = React.useState(new Date(datetimeEpoch));
-
-  React.useEffect(() => {
-    setInterval(() => {
-      setTime((prevTime) => {
-        const newTime = new Date(prevTime);
-        newTime.setSeconds(newTime.getSeconds() + 1);
-
-        return newTime;
-      });
-    }, 1000);
-  }, []);
+  const { hours, minute, seconds } = getDateTime(propsTime);
 
   return (
-    <div className="flex">
-      <span>{time.getHours().toString().padStart(2, "0")}</span> :{" "}
-      <span>{time.getMinutes()}</span>: <span>{time.getSeconds()}</span>
+    <div className="flex text-white/40 font-mono items-center">
+      <span>{hours}</span> :{" "}
+      <span>{_.padStart(minute.toString(), 2, "0")}</span>
     </div>
   );
 };
