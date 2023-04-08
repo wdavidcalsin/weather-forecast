@@ -22,6 +22,9 @@ export const getDateTime = (
   const date = new Date(dateCurrent.datetimeEpoch * 1000);
   const day = date.getDate();
   const month = date.getMonth().toString();
+  const hours = date.getHours();
+
+  console.log("Hours", hours);
 
   const monthInText = monthModel[month].monthSlug;
 

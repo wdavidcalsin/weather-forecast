@@ -6,7 +6,7 @@ import { useWeatherStore } from "@/store";
 import { WeatherDays, WeatherHead } from "@/sub-components";
 
 const Weather = () => {
-  const { isLoading } = useWeatherStore();
+  const { isLoading, fetchWeatherData } = useWeatherStore();
 
   return (
     <div
@@ -17,7 +17,7 @@ const Weather = () => {
         <Spinner />
       ) : (
         <div className="h-full w-full flex flex-col gap-4  ">
-          <WeatherHead />
+          <WeatherHead weatherCondition={fetchWeatherData.currentConditions} />
           <WeatherDays />
         </div>
       )}

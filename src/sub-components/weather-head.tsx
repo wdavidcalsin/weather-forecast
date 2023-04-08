@@ -1,13 +1,18 @@
 import * as React from "react";
 
+import WeatherTime from "./weather-time";
+
 import { Clock } from "@/components";
 import { conditionImage } from "@/model";
-import { useWeatherStore } from "@/store";
+import { CurrentConditions } from "@/types";
 import { getDateTime } from "@/utils";
 
-const WeatherHead = () => {
-  const { fetchWeatherData } = useWeatherStore();
-  const { day, month } = getDateTime(fetchWeatherData.currentConditions);
+interface PropsWeatherHead {
+  weatherCondition: CurrentConditions;
+}
+
+const WeatherHead: React.FC<PropsWeatherHead> = ({ weatherCondition }) => {
+  const { day, month } = getDateTime(weatherCondition);
 
   return (
     <div className="bg-[#303030] rounded-2xl px-4 py-3">
@@ -15,24 +20,22 @@ const WeatherHead = () => {
         <div className="flex flex-col gap-1 text-center">
           <h4 className="text-white/25 text-lg font-medium">Today</h4>
           <h5 className="text-slate-50 text-lg uppercase font-medium">
-            {fetchWeatherData.currentConditions.conditions}
+            {weatherCondition.conditions}
           </h5>
         </div>
         <div className="flex justify-around gap-1 w-full ">
           <div className="pr-3">
             <img
               className="w-20 h-20"
-              src={
-                conditionImage[fetchWeatherData.currentConditions.conditions]
-                  .image
-              }
+              src={conditionImage[weatherCondition.conditions].image}
             />
           </div>
           <div className="flex flex-col gap-2 text-white/25 text-lg font-medium ">
             <div className="flex items-center gap-3">
               Hours:
               <div className="w-10">
-                <Clock />
+                {/* <Clock /> */}
+                <WeatherTime propsTime={weatherCondition} />
               </div>
             </div>
             <div>
