@@ -18,7 +18,7 @@ const WeatherDays = () => {
   return (
     <div className="grid gap-4 grid-cols-3 grid-rows-5 w-full pb-3">
       {fetchWeatherData.days.map((itemDay, index) => {
-        const { day, month } = getDateTime(itemDay.datetime);
+        const { day, month } = getDateTime(itemDay);
 
         return (
           <div
