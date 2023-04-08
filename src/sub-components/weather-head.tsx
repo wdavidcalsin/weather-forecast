@@ -39,7 +39,7 @@ const WeatherHead: React.FC<PropsWeatherHead> = ({ weatherCondition }) => {
               </div>
             </div>
             <div>
-              Date Time:{" "}
+              Date:{" "}
               <span className="text-white/40 font-mono">
                 {day} of {month}
               </span>{" "}
