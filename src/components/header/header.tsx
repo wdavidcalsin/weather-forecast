@@ -13,9 +13,11 @@ const Header = () => {
       <div className="text-slate-200 flex gap-2 items-center justify-end">
         <div>
           <a
-            href="#"
+            href="https://github.com/wdavidcalsin/weather-forecast"
+            target="_blank"
             className="text-base button flex px-4 py-3 items-center gap-2 rounded-3xl"
             style={{ background: "#171717" }}
+            rel="noreferrer"
           >
             <FaGithub />
             <h6>Start on Github</h6>
@@ -23,9 +25,11 @@ const Header = () => {
         </div>
         <div>
           <a
-            href="#"
+            href="https://twitter.com/wdavidcalsin"
+            target="_blank"
             className="text-base button flex px-4 py-3 items-center gap-2 rounded-3xl"
             style={{ background: "#171717" }}
+            rel="noreferrer"
           >
             <FaTwitter />
           </a>
